@@ -1,0 +1,70 @@
+import { useEffect, useState, useRef } from 'react';
+import Hero from './sections/Hero';
+import Features from './sections/Features';
+import Demo from './sections/Demo';
+import Installation from './sections/Installation';
+import Commands from './sections/Commands';
+import Footer from './sections/Footer';
+import Navigation from './sections/Navigation';
+import './App.css';
+
+function App() {
+  const [currentSection, setCurrentSection] = useState('home');
+  const mainRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const sections = ['home', 'features', 'demo', 'install', 'commands'];
+      const scrollPosition = window.scrollY + 100;
+
+      for (const section of sections) {
+        const element = document.getElementById(section);
+        if (element) {
+          const { offsetTop, offsetHeight } = element;
+          if (scrollPosition >= offsetTop && scrollPosition < offsetTop + offsetHeight) {
+            setCurrentSection(section);
+            break;
+          }
+        }
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  return (
+    <div ref={mainRef} className="min-h-screen bg-terminal-bg font-mono noise-bg">
+      {/* Background Grid */}
+      <div className="fixed inset-0 grid-bg pointer-events-none z-0" />
+      
+      {/* Scanlines Overlay */}
+      <div className="fixed inset-0 scanlines pointer-events-none z-50 opacity-30" />
+      
+      {/* Navigation */}
+      <Navigation currentSection={currentSection} />
+      
+      {/* Main Content */}
+      <main className="relative z-10">
+        <section id="home">
+          <Hero />
+        </section>
+        <section id="features">
+          <Features />
+        </section>
+        <section id="demo">
+          <Demo />
+        </section>
+        <section id="install">
+          <Installation />
+        </section>
+        <section id="commands">
+          <Commands />
+        </section>
+        <Footer />
+      </main>
+    </div>
+  );
+}
+
+export default App;
