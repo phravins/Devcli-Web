@@ -84,7 +84,7 @@ export default function Hero() {
       {/* Main Terminal Window */}
       <div
         ref={terminalRef}
-        className="w-full max-w-6xl terminal-window terminal-glow animate-fade-in"
+        className="w-full max-w-[96vw] terminal-window terminal-glow animate-fade-in"
       >
         {/* Terminal Header */}
         <div className="terminal-header">
