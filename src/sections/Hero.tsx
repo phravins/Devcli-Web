@@ -53,7 +53,7 @@ export default function Hero() {
   }, [displayText, isDeleting, currentTagline]);
 
   const copyInstallCommand = () => {
-    navigator.clipboard.writeText('curl -fsSL https://devcli.sh/install | bash');
+    navigator.clipboard.writeText('go install github.com/phravins/devcli@latest');
     setCopied(true);
     setTimeout(() => setCopied(false), 2000);
   };
@@ -109,7 +109,7 @@ export default function Hero() {
           {/* Version Info */}
           <div className="flex items-center gap-4 text-sm">
             <span className="text-terminal-text-dim">version:</span>
-            <span className="text-terminal-green">v2.4.1</span>
+            <span className="text-terminal-green">v1.0.0</span>
             <span className="text-terminal-text-dim">|</span>
             <span className="text-terminal-blue">stable</span>
             <span className="text-terminal-text-dim">|</span>
@@ -138,7 +138,7 @@ export default function Hero() {
             <div className="flex items-center gap-2 bg-terminal-bg-light rounded-lg p-3 border border-terminal-border group hover:border-terminal-green transition-colors">
               <span className="text-terminal-green">$</span>
               <code className="text-terminal-text flex-1 text-sm">
-                curl -fsSL https://devcli.sh/install | bash
+                go install github.com/phravins/devcli@latest
               </code>
               <button
                 onClick={copyInstallCommand}
@@ -175,19 +175,19 @@ export default function Hero() {
             <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 text-xs">
               <div>
                 <span className="text-terminal-text-dim block">Platform</span>
-                <span className="text-terminal-cyan">Linux/macOS/Win</span>
+                <span className="text-terminal-cyan">Linux/macOS/Windows</span>
               </div>
               <div>
                 <span className="text-terminal-text-dim block">License</span>
-                <span className="text-terminal-yellow">MIT</span>
+                <span className="text-terminal-yellow">Apache-2.0 license</span>
               </div>
               <div>
                 <span className="text-terminal-text-dim block">Stars</span>
-                <span className="text-terminal-purple">★ 12.4k</span>
+                <span className="text-terminal-purple">★ 12</span>
               </div>
               <div>
                 <span className="text-terminal-text-dim block">Downloads</span>
-                <span className="text-terminal-green-bright">2.1M+</span>
+                <span className="text-terminal-green-bright">100+</span>
               </div>
             </div>
           </div>

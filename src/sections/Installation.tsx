@@ -61,7 +61,11 @@ const systemRequirements = [
   { label: 'Terminal', value: 'Any modern terminal emulator', required: true },
 ];
 
-export default function Installation() {
+interface InstallationProps {
+  setCurrentView: (view: 'landing' | 'docs' | 'roadmap') => void;
+}
+
+export default function Installation({ setCurrentView }: InstallationProps) {
   const [activeMethod, setActiveMethod] = useState<InstallMethod>(installMethods[0]);
   const [copied, setCopied] = useState<string | null>(null);
 
@@ -95,16 +99,15 @@ export default function Installation() {
               {installMethods.map((method) => {
                 const Icon = method.icon;
                 const isActive = method.id === activeMethod.id;
-                
+
                 return (
                   <button
                     key={method.id}
                     onClick={() => setActiveMethod(method)}
-                    className={`flex items-center gap-2 px-4 py-2 rounded-lg border text-sm transition-all duration-200 ${
-                      isActive
-                        ? 'bg-terminal-green/10 border-terminal-green text-terminal-green'
-                        : 'bg-terminal-bg border-terminal-border text-terminal-text-dim hover:border-terminal-text hover:text-terminal-text'
-                    }`}
+                    className={`flex items-center gap-2 px-4 py-2 rounded-lg border text-sm transition-all duration-200 ${isActive
+                      ? 'bg-terminal-green/10 border-terminal-green text-terminal-green'
+                      : 'bg-terminal-bg border-terminal-border text-terminal-text-dim hover:border-terminal-text hover:text-terminal-text'
+                      }`}
                   >
                     <Icon className="w-4 h-4" />
                     {method.name}
@@ -208,11 +211,10 @@ export default function Installation() {
                         {platform.archs.join(', ')}
                       </span>
                     </div>
-                    <span className={`text-xs px-2 py-1 rounded ${
-                      platform.status === 'supported'
-                        ? 'bg-terminal-green/20 text-terminal-green'
-                        : 'bg-terminal-yellow/20 text-terminal-yellow'
-                    }`}>
+                    <span className={`text-xs px-2 py-1 rounded ${platform.status === 'supported'
+                      ? 'bg-terminal-green/20 text-terminal-green'
+                      : 'bg-terminal-yellow/20 text-terminal-yellow'
+                      }`}>
                       {platform.status}
                     </span>
                   </div>
@@ -250,15 +252,16 @@ export default function Installation() {
                   <span>→</span>
                   GitHub Repository
                 </a>
-                <a
-                  href="https://docs.devcli.sh"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center gap-2 text-terminal-text-dim hover:text-terminal-green transition-colors text-sm"
+                <button
+                  onClick={() => {
+                    setCurrentView('docs');
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                  }}
+                  className="flex items-center gap-2 text-terminal-text-dim hover:text-terminal-green transition-colors text-sm w-full text-left"
                 >
                   <span>→</span>
                   Documentation
-                </a>
+                </button>
                 <a
                   href="https://github.com/devcli/devcli/issues"
                   target="_blank"

@@ -8,11 +8,17 @@ import Footer from './sections/Footer';
 import Navigation from './sections/Navigation';
 import './App.css';
 
+import Documentation from './pages/Documentation';
+import Roadmap from './pages/Roadmap';
+
 function App() {
   const [currentSection, setCurrentSection] = useState('home');
+  const [currentView, setCurrentView] = useState<'landing' | 'docs' | 'roadmap'>('landing');
   const mainRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
+    if (currentView === 'docs') return;
+
     const handleScroll = () => {
       const sections = ['home', 'features', 'demo', 'install', 'commands'];
       const scrollPosition = window.scrollY + 100;
@@ -31,37 +37,51 @@ function App() {
 
     window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+  }, [currentView]);
 
   return (
     <div ref={mainRef} className="min-h-screen bg-terminal-bg font-mono noise-bg">
       {/* Background Grid */}
       <div className="fixed inset-0 grid-bg pointer-events-none z-0" />
-      
+
       {/* Scanlines Overlay */}
       <div className="fixed inset-0 scanlines pointer-events-none z-50 opacity-30" />
-      
+
       {/* Navigation */}
-      <Navigation currentSection={currentSection} />
-      
+      <Navigation currentSection={currentView === 'docs' ? 'docs' : currentSection} setCurrentView={setCurrentView} />
+
       {/* Main Content */}
       <main className="relative z-10">
-        <section id="home">
-          <Hero />
-        </section>
-        <section id="features">
-          <Features />
-        </section>
-        <section id="demo">
-          <Demo />
-        </section>
-        <section id="install">
-          <Installation />
-        </section>
-        <section id="commands">
-          <Commands />
-        </section>
-        <Footer />
+        {currentView === 'landing' ? (
+          <>
+            <section id="home">
+              <Hero />
+            </section>
+            <section id="features">
+              <Features />
+            </section>
+            <section id="demo">
+              <Demo />
+            </section>
+            <section id="install">
+              <Installation setCurrentView={setCurrentView} />
+            </section>
+            <section id="commands">
+              <Commands />
+            </section>
+            <Footer setCurrentView={setCurrentView} />
+          </>
+        ) : currentView === 'docs' ? (
+          <Documentation onBack={() => {
+            setCurrentView('landing');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+          }} />
+        ) : (
+          <Roadmap onBack={() => {
+            setCurrentView('landing');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+          }} />
+        )}
       </main>
     </div>
   );

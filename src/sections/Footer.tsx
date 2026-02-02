@@ -34,7 +34,11 @@ const socialLinks = [
   { icon: Mail, href: 'mailto:hello@devcli.sh', label: 'Email' },
 ];
 
-export default function Footer() {
+interface FooterProps {
+  setCurrentView: (view: 'landing' | 'docs' | 'roadmap') => void;
+}
+
+export default function Footer({ setCurrentView }: FooterProps) {
   const scrollToSection = (href: string) => {
     if (href.startsWith('#')) {
       const element = document.getElementById(href.slice(1));
@@ -56,10 +60,10 @@ export default function Footer() {
               <span className="text-xl font-bold text-terminal-text">devcli</span>
             </div>
             <p className="text-terminal-text-dim text-sm mb-6 max-w-xs">
-              The terminal-based development workspace that consolidates essential 
+              The terminal-based development workspace that consolidates essential
               developer tools into a single unified interface.
             </p>
-            
+
             {/* Social Links */}
             <div className="flex items-center gap-3">
               {socialLinks.map((social) => {
@@ -103,15 +107,27 @@ export default function Footer() {
             <ul className="space-y-2">
               {footerLinks.resources.map((link) => (
                 <li key={link.label}>
-                  <a
-                    href={link.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-terminal-text-dim hover:text-terminal-green transition-colors text-sm inline-flex items-center gap-1"
-                  >
-                    {link.label}
-                    <ExternalLink className="w-3 h-3" />
-                  </a>
+                  {link.label === 'Documentation' || link.label === 'Roadmap' ? (
+                    <button
+                      onClick={() => {
+                        setCurrentView(link.label === 'Documentation' ? 'docs' : 'roadmap');
+                        window.scrollTo({ top: 0, behavior: 'smooth' });
+                      }}
+                      className="text-terminal-text-dim hover:text-terminal-green transition-colors text-sm inline-flex items-center gap-1"
+                    >
+                      {link.label}
+                    </button>
+                  ) : (
+                    <a
+                      href={link.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-terminal-text-dim hover:text-terminal-green transition-colors text-sm inline-flex items-center gap-1"
+                    >
+                      {link.label}
+                      <ExternalLink className="w-3 h-3" />
+                    </a>
+                  )}
                 </li>
               ))}
             </ul>
@@ -168,24 +184,24 @@ export default function Footer() {
               <span>© {new Date().getFullYear()} DevCLI.</span>
               <span>Made with</span>
               <Heart className="w-4 h-4 text-terminal-red inline" />
-              <span>by developers, for developers.</span>
+              <span>by phravins, for developers.</span>
             </div>
 
             {/* Stats */}
             <div className="flex items-center gap-6 text-sm">
               <div className="flex items-center gap-2">
                 <span className="text-terminal-text-dim">Latest:</span>
-                <span className="text-terminal-green">v2.4.1</span>
+                <span className="text-terminal-green">v1.0.0</span>
               </div>
               <div className="flex items-center gap-2">
                 <span className="text-terminal-text-dim">License:</span>
-                <a 
+                <a
                   href="https://github.com/devcli/devcli/blob/main/LICENSE"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-terminal-yellow hover:text-terminal-green transition-colors"
                 >
-                  MIT
+                  Apache-2.0 license
                 </a>
               </div>
             </div>
