@@ -13,10 +13,12 @@ import Roadmap from './pages/Roadmap';
 import DetailedFeatures from './pages/DetailedFeatures';
 import License from './pages/License';
 import Security from './pages/Security';
+import CodeOfConduct from './pages/CodeOfConduct';
+import Contributing from './pages/Contributing';
 
 function App() {
   const [currentSection, setCurrentSection] = useState('home');
-  const [currentView, setCurrentView] = useState<'landing' | 'docs' | 'roadmap' | 'features' | 'license' | 'security'>('landing');
+  const [currentView, setCurrentView] = useState<'landing' | 'docs' | 'roadmap' | 'features' | 'license' | 'security' | 'code-of-conduct' | 'contributing'>('landing');
   const mainRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -91,6 +93,16 @@ function App() {
           }} />
         ) : currentView === 'security' ? (
           <Security onBack={() => {
+            setCurrentView('landing');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+          }} />
+        ) : currentView === 'code-of-conduct' ? (
+          <CodeOfConduct onBack={() => {
+            setCurrentView('landing');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+          }} />
+        ) : currentView === 'contributing' ? (
+          <Contributing onBack={() => {
             setCurrentView('landing');
             window.scrollTo({ top: 0, behavior: 'smooth' });
           }} />

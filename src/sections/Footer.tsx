@@ -35,7 +35,7 @@ const socialLinks = [
 ];
 
 interface FooterProps {
-  setCurrentView: (view: 'landing' | 'docs' | 'roadmap' | 'features' | 'license' | 'security') => void;
+  setCurrentView: (view: 'landing' | 'docs' | 'roadmap' | 'features' | 'license' | 'security' | 'code-of-conduct' | 'contributing') => void;
 }
 
 export default function Footer({ setCurrentView }: FooterProps) {
@@ -168,10 +168,13 @@ export default function Footer({ setCurrentView }: FooterProps) {
             <ul className="space-y-2">
               {footerLinks.legal.map((link) => (
                 <li key={link.label}>
-                  {link.label === 'Apache-2.0 License' ? (
+                  {['Apache-2.0 License', 'Security', 'Code of Conduct', 'Contributing'].includes(link.label) ? (
                     <button
                       onClick={() => {
-                        setCurrentView('license');
+                        if (link.label === 'Security') setCurrentView('security');
+                        else if (link.label === 'Code of Conduct') setCurrentView('code-of-conduct');
+                        else if (link.label === 'Contributing') setCurrentView('contributing');
+                        else setCurrentView('license');
                         window.scrollTo({ top: 0, behavior: 'smooth' });
                       }}
                       className="text-terminal-text-dim hover:text-terminal-green transition-colors text-sm inline-flex items-center gap-1"

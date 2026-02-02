@@ -3,7 +3,7 @@ import { Terminal, Menu, X } from 'lucide-react';
 
 interface NavigationProps {
   currentSection: string;
-  setCurrentView: (view: 'landing' | 'docs' | 'roadmap' | 'features' | 'license' | 'security') => void;
+  setCurrentView: (view: 'landing' | 'docs' | 'roadmap' | 'features' | 'license' | 'security' | 'code-of-conduct' | 'contributing') => void;
 }
 
 const navItems = [
