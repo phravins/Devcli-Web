@@ -11,10 +11,11 @@ import './App.css';
 import Documentation from './pages/Documentation';
 import Roadmap from './pages/Roadmap';
 import DetailedFeatures from './pages/DetailedFeatures';
+import License from './pages/License';
 
 function App() {
   const [currentSection, setCurrentSection] = useState('home');
-  const [currentView, setCurrentView] = useState<'landing' | 'docs' | 'roadmap' | 'features'>('landing');
+  const [currentView, setCurrentView] = useState<'landing' | 'docs' | 'roadmap' | 'features' | 'license'>('landing');
   const mainRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -79,6 +80,11 @@ function App() {
           }} />
         ) : currentView === 'features' ? (
           <DetailedFeatures onBack={() => {
+            setCurrentView('landing');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+          }} />
+        ) : currentView === 'license' ? (
+          <License onBack={() => {
             setCurrentView('landing');
             window.scrollTo({ top: 0, behavior: 'smooth' });
           }} />

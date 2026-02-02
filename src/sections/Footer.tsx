@@ -20,7 +20,7 @@ const footerLinks = {
     { label: 'Twitter / X', href: 'https://twitter.com/devcli', external: true },
   ],
   legal: [
-    { label: 'MIT License', href: 'https://github.com/devcli/devcli/blob/main/LICENSE', external: true },
+    { label: 'Apache-2.0 License', href: 'https://github.com/devcli/devcli/blob/main/LICENSE', external: true },
     { label: 'Code of Conduct', href: 'https://github.com/devcli/devcli/blob/main/CODE_OF_CONDUCT.md', external: true },
     { label: 'Contributing', href: 'https://github.com/devcli/devcli/blob/main/CONTRIBUTING.md', external: true },
     { label: 'Security', href: 'https://github.com/devcli/devcli/security', external: true },
@@ -35,7 +35,7 @@ const socialLinks = [
 ];
 
 interface FooterProps {
-  setCurrentView: (view: 'landing' | 'docs' | 'roadmap' | 'features') => void;
+  setCurrentView: (view: 'landing' | 'docs' | 'roadmap' | 'features' | 'license') => void;
 }
 
 export default function Footer({ setCurrentView }: FooterProps) {
@@ -168,15 +168,27 @@ export default function Footer({ setCurrentView }: FooterProps) {
             <ul className="space-y-2">
               {footerLinks.legal.map((link) => (
                 <li key={link.label}>
-                  <a
-                    href={link.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-terminal-text-dim hover:text-terminal-green transition-colors text-sm inline-flex items-center gap-1"
-                  >
-                    {link.label}
-                    <ExternalLink className="w-3 h-3" />
-                  </a>
+                  {link.label === 'Apache-2.0 License' ? (
+                    <button
+                      onClick={() => {
+                        setCurrentView('license');
+                        window.scrollTo({ top: 0, behavior: 'smooth' });
+                      }}
+                      className="text-terminal-text-dim hover:text-terminal-green transition-colors text-sm inline-flex items-center gap-1"
+                    >
+                      {link.label}
+                    </button>
+                  ) : (
+                    <a
+                      href={link.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-terminal-text-dim hover:text-terminal-green transition-colors text-sm inline-flex items-center gap-1"
+                    >
+                      {link.label}
+                      <ExternalLink className="w-3 h-3" />
+                    </a>
+                  )}
                 </li>
               ))}
             </ul>
@@ -204,14 +216,15 @@ export default function Footer({ setCurrentView }: FooterProps) {
               </div>
               <div className="flex items-center gap-2">
                 <span className="text-terminal-text-dim">License:</span>
-                <a
-                  href="https://github.com/devcli/devcli/blob/main/LICENSE"
-                  target="_blank"
-                  rel="noopener noreferrer"
+                <button
+                  onClick={() => {
+                    setCurrentView('license');
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                  }}
                   className="text-terminal-yellow hover:text-terminal-green transition-colors"
                 >
                   Apache-2.0 license
-                </a>
+                </button>
               </div>
             </div>
           </div>
