@@ -35,7 +35,7 @@ const socialLinks = [
 ];
 
 interface FooterProps {
-  setCurrentView: (view: 'landing' | 'docs' | 'roadmap') => void;
+  setCurrentView: (view: 'landing' | 'docs' | 'roadmap' | 'features') => void;
 }
 
 export default function Footer({ setCurrentView }: FooterProps) {
@@ -88,16 +88,25 @@ export default function Footer({ setCurrentView }: FooterProps) {
           <div>
             <h4 className="text-terminal-text font-semibold mb-4">Product</h4>
             <ul className="space-y-2">
-              {footerLinks.product.map((link) => (
-                <li key={link.label}>
-                  <button
-                    onClick={() => scrollToSection(link.href)}
-                    className="text-terminal-text-dim hover:text-terminal-green transition-colors text-sm"
-                  >
-                    {link.label}
-                  </button>
-                </li>
-              ))}
+              <ul className="space-y-2">
+                {footerLinks.product.map((link) => (
+                  <li key={link.label}>
+                    <button
+                      onClick={() => {
+                        if (link.label === 'Features') {
+                          setCurrentView('features');
+                          window.scrollTo({ top: 0, behavior: 'smooth' });
+                        } else {
+                          scrollToSection(link.href);
+                        }
+                      }}
+                      className="text-terminal-text-dim hover:text-terminal-green transition-colors text-sm"
+                    >
+                      {link.label}
+                    </button>
+                  </li>
+                ))}
+              </ul>
             </ul>
           </div>
 
