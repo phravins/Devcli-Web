@@ -35,7 +35,7 @@ const socialLinks = [
 ];
 
 interface FooterProps {
-  setCurrentView: (view: 'landing' | 'docs' | 'roadmap' | 'features' | 'license') => void;
+  setCurrentView: (view: 'landing' | 'docs' | 'roadmap' | 'features' | 'license' | 'security') => void;
 }
 
 export default function Footer({ setCurrentView }: FooterProps) {

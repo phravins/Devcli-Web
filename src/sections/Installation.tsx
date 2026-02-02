@@ -62,7 +62,7 @@ const systemRequirements = [
 ];
 
 interface InstallationProps {
-  setCurrentView: (view: 'landing' | 'docs' | 'roadmap' | 'features' | 'license') => void;
+  setCurrentView: (view: 'landing' | 'docs' | 'roadmap' | 'features' | 'license' | 'security') => void;
 }
 
 export default function Installation({ setCurrentView }: InstallationProps) {
