@@ -82,9 +82,9 @@ export default function Hero() {
       </div>
 
       {/* Main Terminal Window */}
-      <div 
+      <div
         ref={terminalRef}
-        className="w-full max-w-4xl terminal-window terminal-glow animate-fade-in"
+        className="w-full max-w-6xl terminal-window terminal-glow animate-fade-in"
       >
         {/* Terminal Header */}
         <div className="terminal-header">
@@ -95,19 +95,19 @@ export default function Hero() {
         </div>
 
         {/* Terminal Body */}
-        <div className="terminal-body space-y-4">
+        <div className="terminal-body space-y-6 p-8">
           {/* Welcome Message */}
-          <div className="text-terminal-text-dim">
+          <div className="text-terminal-text-dim text-base">
             <p>Last login: {new Date().toLocaleString()} from 192.168.1.42</p>
           </div>
 
           {/* ASCII Logo */}
-          <pre className="ascii-art text-terminal-green animate-fade-in">
+          <pre className="ascii-art text-terminal-green animate-fade-in text-[10px] sm:text-sm md:text-base leading-none">
             {asciiLogo}
           </pre>
 
           {/* Version Info */}
-          <div className="flex items-center gap-4 text-sm">
+          <div className="flex items-center gap-4 text-base">
             <span className="text-terminal-text-dim">version:</span>
             <span className="text-terminal-green">v1.0.0</span>
             <span className="text-terminal-text-dim">|</span>
@@ -117,11 +117,11 @@ export default function Hero() {
           </div>
 
           {/* Divider */}
-          <div className="border-t border-terminal-border my-4" />
+          <div className="border-t border-terminal-border my-6" />
 
           {/* Description with typing effect */}
           <div className="space-y-2">
-            <div className="flex items-start gap-2">
+            <div className="flex items-start gap-2 text-lg">
               <span className="prompt">
                 <span className="prompt-user">user</span>
                 <span className="prompt-symbol">@</span>
@@ -134,10 +134,10 @@ export default function Hero() {
 
           {/* Quick Install Command */}
           <div className="mt-8 space-y-2">
-            <p className="text-terminal-text-dim text-sm"># Quick install</p>
-            <div className="flex items-center gap-2 bg-terminal-bg-light rounded-lg p-3 border border-terminal-border group hover:border-terminal-green transition-colors">
-              <span className="text-terminal-green">$</span>
-              <code className="text-terminal-text flex-1 text-sm">
+            <p className="text-terminal-text-dim text-base"># Quick install</p>
+            <div className="flex items-center gap-2 bg-terminal-bg-light rounded-lg p-4 border border-terminal-border group hover:border-terminal-green transition-colors">
+              <span className="text-terminal-green text-lg">$</span>
+              <code className="text-terminal-text flex-1 text-base sm:text-lg">
                 go install github.com/phravins/devcli@latest
               </code>
               <button
@@ -145,7 +145,7 @@ export default function Hero() {
                 className="p-2 text-terminal-text-dim hover:text-terminal-green transition-colors"
                 title="Copy to clipboard"
               >
-                {copied ? <Check className="w-4 h-4" /> : <Copy className="w-4 h-4" />}
+                {copied ? <Check className="w-5 h-5" /> : <Copy className="w-5 h-5" />}
               </button>
             </div>
           </div>
