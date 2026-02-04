@@ -1,14 +1,14 @@
 import { useState } from 'react';
-import { 
-  FolderGit2, 
-  Play, 
-  Container, 
-  Server, 
-  FileCode, 
-  Layers, 
-  Library, 
-  Bot, 
-  FolderOpen, 
+import {
+  FolderGit2,
+  Play,
+  Container,
+  Server,
+  FileCode,
+  Layers,
+  Library,
+  Bot,
+  FolderOpen,
   RefreshCw,
   ChevronRight,
   Check
@@ -31,12 +31,12 @@ const features: Feature[] = [
     icon: FolderGit2,
     name: 'Project Manager',
     command: 'devcli project',
-    description: 'Scaffolding, templates, and history tracking',
+    description: 'Create projects instantly from 50+ templates with zero manual setup',
     details: [
-      'Create projects from 50+ templates',
-      'Track recent projects with metadata',
-      'One-command project switching',
-      'Custom template repository support',
+      'Generate complete project structures with one command',
+      'Automatic dependency installation (npm, pip, go mod, etc.)',
+      'Smart project history - tracks all your projects with timestamps',
+      'Built-in Git initialization and first commit',
     ],
     example: `$ devcli project new my-app --template react-ts
 ✓ Created project from template
@@ -54,12 +54,12 @@ $ devcli project list
     icon: Play,
     name: 'Task Runner',
     command: 'devcli run',
-    description: 'One-click execution of build, test, and lint commands',
+    description: 'Run build, test, and lint commands without remembering complex scripts',
     details: [
-      'Auto-detects project type and scripts',
-      'Supports Go, Python, Node, Rust, C++',
-      'Parallel task execution',
-      'Custom task definitions in devcli.yaml',
+      'Automatically finds all available tasks in your project files',
+      'Works with npm/yarn, Go, Python, Rust, Makefiles - no config needed',
+      'Watch your tasks execute with live, color-coded output',
+      'Organize and categorize tasks for easy access',
     ],
     example: `$ devcli run
 ? Select task: (Use arrow keys)
@@ -306,16 +306,15 @@ export default function Features() {
             {features.map((feature) => {
               const Icon = feature.icon;
               const isActive = feature.id === activeFeature.id;
-              
+
               return (
                 <button
                   key={feature.id}
                   onClick={() => handleFeatureClick(feature)}
-                  className={`w-full text-left p-4 rounded-lg border transition-all duration-200 group ${
-                    isActive
-                      ? 'bg-terminal-bg-light border-terminal-green shadow-terminal'
-                      : 'bg-terminal-bg border-terminal-border hover:border-terminal-text-dim'
-                  }`}
+                  className={`w-full text-left p-4 rounded-lg border transition-all duration-200 group ${isActive
+                    ? 'bg-terminal-bg-light border-terminal-green shadow-terminal'
+                    : 'bg-terminal-bg border-terminal-border hover:border-terminal-text-dim'
+                    }`}
                 >
                   <div className="flex items-start gap-3">
                     <Icon className={`w-5 h-5 mt-0.5 ${feature.color}`} />
