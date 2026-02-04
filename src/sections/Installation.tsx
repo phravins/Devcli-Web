@@ -35,14 +35,14 @@ const installMethods: InstallMethod[] = [
     id: 'go',
     name: 'Go Install',
     icon: Package,
-    command: 'go install github.com/devcli/devcli@latest',
+    command: 'go install github.com/phravins/devcli@latest',
     description: 'Install directly from source with Go',
   },
   {
     id: 'manual',
     name: 'Manual Download',
     icon: Download,
-    command: '# Download from GitHub releases\n# https://github.com/devcli/devcli/releases',
+    command: '# Download from GitHub releases\n# https://github.com/phravins/devcli/releases',
     description: 'Download pre-built binaries for your platform',
   },
 ];
@@ -244,7 +244,7 @@ export default function Installation({ setCurrentView }: InstallationProps) {
               </h3>
               <div className="space-y-2">
                 <a
-                  href="https://github.com/devcli/devcli"
+                  href="https://github.com/phravins/devcli"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex items-center gap-2 text-terminal-text-dim hover:text-terminal-green transition-colors text-sm"
@@ -263,7 +263,7 @@ export default function Installation({ setCurrentView }: InstallationProps) {
                   Documentation
                 </button>
                 <a
-                  href="https://github.com/devcli/devcli/issues"
+                  href="https://github.com/phravins/devcli/issues"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex items-center gap-2 text-terminal-text-dim hover:text-terminal-green transition-colors text-sm"
@@ -272,7 +272,7 @@ export default function Installation({ setCurrentView }: InstallationProps) {
                   Report an Issue
                 </a>
                 <a
-                  href="https://github.com/devcli/devcli/discussions"
+                  href="https://github.com/phravins/devcli/discussions"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex items-center gap-2 text-terminal-text-dim hover:text-terminal-green transition-colors text-sm"
