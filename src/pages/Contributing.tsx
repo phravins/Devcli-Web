@@ -62,7 +62,7 @@ export default function Contributing({ onBack }: { onBack: () => void }) {
                         <li>
                             <strong className="text-terminal-text">Fork the repository</strong>
                             <br />
-                            <code className="text-xs bg-terminal-bg px-2 py-1 rounded mt-1 inline-block">git clone https://github.com/YOUR-USERNAME/devcli.git</code>
+                            <code className="text-xs bg-terminal-bg px-2 py-1 rounded mt-1 inline-block">git clone https://github.com/phravins/devcli.git</code>
                         </li>
                         <li>
                             <strong className="text-terminal-text">Create a feature branch</strong>
