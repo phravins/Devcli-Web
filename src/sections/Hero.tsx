@@ -102,12 +102,12 @@ export default function Hero() {
           </div>
 
           {/* ASCII Logo */}
-          <pre className="ascii-art text-terminal-green animate-fade-in text-[10px] sm:text-sm md:text-base leading-none">
+          <pre className="ascii-art text-terminal-green animate-fade-in text-[10px] sm:text-sm md:text-base leading-none text-center">
             {asciiLogo}
           </pre>
 
           {/* Version Info */}
-          <div className="flex items-center gap-4 text-base">
+          <div className="flex items-center justify-center gap-4 text-base">
             <span className="text-terminal-text-dim">version:</span>
             <span className="text-terminal-green">v1.0.0</span>
             <span className="text-terminal-text-dim">|</span>
