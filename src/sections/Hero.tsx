@@ -160,7 +160,7 @@ export default function Hero() {
               <ArrowDown className="w-4 h-4" />
             </button>
             <a
-              href="https://github.com/devcli/devcli"
+              href="https://github.com/phravins/devcli"
               target="_blank"
               rel="noopener noreferrer"
               className="px-6 py-2.5 border border-terminal-border text-terminal-text hover:border-terminal-blue hover:text-terminal-blue transition-all duration-200 flex items-center gap-2"
