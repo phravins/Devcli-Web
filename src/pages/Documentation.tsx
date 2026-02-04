@@ -135,13 +135,22 @@ export default function Documentation({ onBack }: { onBack: () => void }) {
                         {/* Feature 1 */}
                         <div>
                             <h3 className="text-xl font-bold text-terminal-blue mb-3">Project Creation and Management</h3>
-                            <p className="text-terminal-text-dim mb-4">DevCLI provides project scaffolding tools that generate complete project structures from templates, eliminating manual setup.</p>
-                            <ul className="list-disc list-inside space-y-1 text-terminal-text ml-4">
-                                <li>Predefined templates for Go, Python, Node.js, React, etc.</li>
-                                <li>Smart naming with auto-incrementing.</li>
-                                <li>Automated package manager installation (npm install, pip install).</li>
-                                <li>Project history tracking and backups.</li>
-                            </ul>
+                            <p className="text-terminal-text-dim mb-4">
+                                Stop wasting time on repetitive project setup. DevCLI's project scaffolding feature creates complete, ready-to-use project structures in seconds. No more manually creating folders, configuration files, or remembering framework-specific boilerplate.
+                            </p>
+                            <div className="bg-terminal-bg-light border-l-4 border-terminal-blue p-4 mb-4 rounded">
+                                <p className="text-terminal-text text-sm font-semibold mb-2">What you get:</p>
+                                <ul className="list-disc list-inside space-y-2 text-terminal-text-dim text-sm ml-2">
+                                    <li><strong className="text-terminal-text">Ready-to-use templates</strong> for popular frameworks (Go, Python, Node.js, React, and more)</li>
+                                    <li><strong className="text-terminal-text">Automatic dependency installation</strong> - runs npm install, pip install, etc. for you</li>
+                                    <li><strong className="text-terminal-text">Smart naming</strong> - automatically handles duplicate project names by adding numbers</li>
+                                    <li><strong className="text-terminal-text">Project history</strong> - keeps track of all your projects with automatic cleanup</li>
+                                    <li><strong className="text-terminal-text">Built-in backups</strong> - safely archive projects before making major changes</li>
+                                </ul>
+                            </div>
+                            <p className="text-terminal-green text-sm italic">
+                                💡 Example: Create a new React app with "devcli create react my-app" and start coding immediately!
+                            </p>
                         </div>
 
                         {/* Feature 2 */}
