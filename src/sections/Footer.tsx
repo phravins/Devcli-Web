@@ -1,4 +1,4 @@
-import { Github, Twitter, MessageCircle, Mail, Heart, Terminal, ExternalLink } from 'lucide-react';
+import { Github, Heart, Terminal, ExternalLink } from 'lucide-react';
 
 const footerLinks = {
   product: [
@@ -8,30 +8,26 @@ const footerLinks = {
     { label: 'Commands', href: '#commands' },
   ],
   resources: [
-    { label: 'Documentation', href: 'https://docs.devcli.sh', external: true },
-    { label: 'API Reference', href: 'https://docs.devcli.sh/api', external: true },
-    { label: 'Changelog', href: 'https://github.com/devcli/devcli/blob/main/CHANGELOG.md', external: true },
-    { label: 'Roadmap', href: 'https://github.com/devcli/devcli/projects', external: true },
+    { label: 'Documentation', href: 'https://github.com/phravins/devcli#readme', external: true },
+    { label: 'Changelog', href: 'https://github.com/phravins/devcli/commits/main', external: true },
+    { label: 'Releases', href: 'https://github.com/phravins/devcli/releases', external: true },
   ],
   community: [
-    { label: 'GitHub Discussions', href: 'https://github.com/devcli/devcli/discussions', external: true },
-    { label: 'Discord Server', href: 'https://discord.gg/devcli', external: true },
-    { label: 'Stack Overflow', href: 'https://stackoverflow.com/questions/tagged/devcli', external: true },
-    { label: 'Twitter / X', href: 'https://twitter.com/devcli', external: true },
+    { label: 'GitHub Issues', href: 'https://github.com/phravins/devcli/issues', external: true },
+    { label: 'GitHub Discussions', href: 'https://github.com/phravins/devcli/discussions', external: true },
+    { label: 'Contribute', href: 'https://github.com/phravins/devcli/fork', external: true },
   ],
   legal: [
-    { label: 'Apache-2.0 License', href: 'https://github.com/devcli/devcli/blob/main/LICENSE', external: true },
-    { label: 'Code of Conduct', href: 'https://github.com/devcli/devcli/blob/main/CODE_OF_CONDUCT.md', external: true },
-    { label: 'Contributing', href: 'https://github.com/devcli/devcli/blob/main/CONTRIBUTING.md', external: true },
-    { label: 'Security', href: 'https://github.com/devcli/devcli/security', external: true },
+    { label: 'Apache-2.0 License', href: 'https://github.com/phravins/devcli/blob/main/LICENSE', external: true },
+    { label: 'Code of Conduct', href: 'https://github.com/phravins/devcli/blob/main/CODE_OF_CONDUCT.md', external: true },
+    { label: 'Contributing', href: 'https://github.com/phravins/devcli#contributing', external: true },
+    { label: 'Security', href: 'https://github.com/phravins/devcli/security', external: true },
   ],
 };
 
 const socialLinks = [
-  { icon: Github, href: 'https://github.com/devcli/devcli', label: 'GitHub' },
-  { icon: Twitter, href: 'https://twitter.com/devcli', label: 'Twitter' },
-  { icon: MessageCircle, href: 'https://discord.gg/devcli', label: 'Discord' },
-  { icon: Mail, href: 'mailto:hello@devcli.sh', label: 'Email' },
+  { icon: Github, href: 'https://github.com/phravins/devcli', label: 'GitHub' },
+  { icon: Github, href: 'https://github.com/phravins', label: 'Author' },
 ];
 
 interface FooterProps {
@@ -116,27 +112,15 @@ export default function Footer({ setCurrentView }: FooterProps) {
             <ul className="space-y-2">
               {footerLinks.resources.map((link) => (
                 <li key={link.label}>
-                  {link.label === 'Documentation' || link.label === 'Roadmap' ? (
-                    <button
-                      onClick={() => {
-                        setCurrentView(link.label === 'Documentation' ? 'docs' : 'roadmap');
-                        window.scrollTo({ top: 0, behavior: 'smooth' });
-                      }}
-                      className="text-terminal-text-dim hover:text-terminal-green transition-colors text-sm inline-flex items-center gap-1"
-                    >
-                      {link.label}
-                    </button>
-                  ) : (
-                    <a
-                      href={link.href}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-terminal-text-dim hover:text-terminal-green transition-colors text-sm inline-flex items-center gap-1"
-                    >
-                      {link.label}
-                      <ExternalLink className="w-3 h-3" />
-                    </a>
-                  )}
+                  <a
+                    href={link.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-terminal-text-dim hover:text-terminal-green transition-colors text-sm inline-flex items-center gap-1"
+                  >
+                    {link.label}
+                    <ExternalLink className="w-3 h-3" />
+                  </a>
                 </li>
               ))}
             </ul>
